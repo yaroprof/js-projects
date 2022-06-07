@@ -19,3 +19,44 @@ function Gallery(element){
 // якщо - ок, повертається готовий елемент, якщо ні - зкидається і зупиняється вибір з повідомленням
 const nature= new Gallery(getElement('.nature'))
 const city= new Gallery(getElement('.city'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
