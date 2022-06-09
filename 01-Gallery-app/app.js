@@ -43,7 +43,6 @@ function Gallery(element){
 Gallery.prototype.openModal = function(selectedImage, list){
 	this.setMainImage(selectedImage)
 
-	// ітеруємо list і на кожній ітерації ми маємо доступ до image- аргумента
 	this.modalImages.innerHTML = list.map(function(image){
 		return `<img src='${image.src}' title='${image.title}' data-id='${image.dataset.id}' class='${selectedImage.dataset.id === image.dataset.id ? "modal-img selected" : "modal-img" }' />`
 	}).join('')
@@ -66,7 +65,6 @@ Gallery.prototype.setMainImage = function(selectedImage){
 // remove all unusefull event listeners
 Gallery.prototype.closeModal = function(){
 	this.modal.classList.remove('open')
- // після відпрацювання всіх подій, необхідно закрити всі обробники подій
 	this.closeBtn.removeEventListener('click', this.closeModal)
 	this.nextBtn.removeEventListener('click', this.nextImage)
 	this.prevBtn.removeEventListener('click', this.prevImage)
@@ -92,8 +90,7 @@ Gallery.prototype.prevImage = function(){
 
 Gallery.prototype.chooseImage = function(e){
 	if(e.target.classList.contains('modal-img')){
-		const selected = this.modalImages.querySelector('.selected') // видаляємо всі автоматично стоврені класи selected, при яких підсвічуються всі виділені зображення, як наслідок- після прооходження рядку- всі картинки підсвічені
-		// далі ми встановлюємо цей клас виключно для картинок з target- конкретно виділених
+		const selected = this.modalImages.querySelector('.selected') 
 		selected.classList.remove('selected')
 		this.setMainImage(e.target)
 		e.target.classList.add('selected')
