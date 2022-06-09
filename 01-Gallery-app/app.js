@@ -39,7 +39,6 @@ function Gallery(element){
 }
 
 // --- adding Prototypes
-// окремо обране зображення з методом openModel (e.target,this.list - обрати об'єкт з націленої дії; this.list з певного переліку- категорії)
 Gallery.prototype.openModal = function(selectedImage, list){
 	this.setMainImage(selectedImage)
 
@@ -61,8 +60,8 @@ Gallery.prototype.setMainImage = function(selectedImage){
 	this.modalImg.src = selectedImage.src
 	this.imageName.textContent = selectedImage.title
 }
+
 // remove all unusefull event listeners
-// для видалення modal необх. застосув. три команди: closeBtn, nextBtn, prevBtn
 Gallery.prototype.closeModal = function(){
 	this.modal.classList.remove('open')
  // після відпрацювання всіх подій, необхідно закрити всі обробники подій
@@ -70,15 +69,13 @@ Gallery.prototype.closeModal = function(){
 	this.nextBtn.removeEventListener('click', this.nextImage)
 	this.prevBtn.removeEventListener('click', this.prevImage)
 }
-// обираємо з малої галереї зображення з класом .selected (створеного у this.modalImages.innerHTML)
-// проводимо маніпуляції зі змінною selected
-// nextElementSibling - перебирає рядок дочірніх елементів від selected. замість циклу
+
 Gallery.prototype.nextImage = function(){
 	const selected = this.modalImages.querySelector('.selected')
-	const next = selected.nextElementSibling || this.modalImages.firstElementChild // 01 якщо перелік закінчується, обирається перший елемент переліку
-	selected.classList.remove('selected') // 02 після проходження рядка видал. клас selected - видал modal - зображення
-	next.classList.add('selected') // 03 відповідно починається наступний новий обраний - selected // перевертаємо перелік та обираємо один елемент за одним
-	this.setMainImage(next)  // встановл. Головне зобр. відповідно до next елемента
+	const next = selected.nextElementSibling || this.modalImages.firstElementChild 
+	selected.classList.remove('selected') 
+	next.classList.add('selected') 
+	this.setMainImage(next)  
 }
 
 Gallery.prototype.prevImage = function(){
